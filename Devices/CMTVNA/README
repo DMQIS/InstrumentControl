@@ -1,0 +1,5 @@
+These two files represent two ways of interacting with the VNA. The main differnce between them is one uses only the socket to communicate with the VNA, and thus can be run from any machine on the same network as the VNA computer. The second uses the COM port for most functions, but still requires use of the socket to control the auxiliary source in the 4-port VNA.
+
+The COM port version is more responsive and is preferred for local interaction with the VNA. It is identical to programmatic mouse control of the GUI.
+
+The socket version will be better for a unified control scheme and for applications using the two-tone spectroscopy functionality of the VNA, but work should be put into integrating the 'VNA' class from VNAfunctions.py and the 'VNAAux' class from VNA.py. 

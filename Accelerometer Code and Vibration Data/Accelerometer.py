@@ -32,8 +32,6 @@ s = int(input("How long is this run in seconds? "))
 blocksize = 48000*s  # Number of samples to acquire per block
 samplerate = 48000  # 48000, 44100, 32000, 22100, 16000, 11050, 8000
 reps = 1  # repetitions of data collection
-mn = -1  # Graph minimum
-mx = 1  # Graph maximum
 chan = 1  # channel (0 or 1) (Channel 1 should be more sensitive)
 name = input("What is the name of this run? ")  # Name for save files
 
@@ -127,7 +125,6 @@ def TMSFindDevices():
         print("ERROR: No compatible devices found")
         exit()
         # raise NoDevicesFound("No compatible devices found")
-    print(dev_info)
     return dev_info
 
 # sounddevice utilizes a call back from PortAudio to lower latency of
@@ -172,17 +169,6 @@ elif info[dev]['format'] == 0:  # acceleration units
 # Use q to get data from callback - call back is in different thread
 q = queue.Queue()
 
-# set up for example plot by defining the time axis
-# x = np.linspace(0, (blocksize-1)/samplerate, blocksize)
-
-# plt.ion()  # to run GUI event loop
-# figure, ax = plt.subplots()
-# plt.title("The Modal Shop "+info[dev]['model'], fontsize=20)
-# plt.xlabel("Time (S)")
-# plt.ylabel(units[chan])    # set channel
-# plt.axis([0, blocksize/samplerate, mn, mx])
-# first = 0
-
 stream = sd.InputStream(
         device=info[dev]['device'], channels=2,
         samplerate=samplerate, dtype='float32', blocksize=blocksize,
@@ -197,34 +183,16 @@ for i in range(reps):
 
     # sdata is scaled to engineering units (EU) and ready for processing
     # appropriate for your specific application
-
-     # Plot data just for an example
-    # plt.axis([0, (blocksize-1)/samplerate, np.min(sdata)*1.10, np.max(sdata)*1.10])  # crude autoscale
-    # line, = plt.plot(1, 1)
-    # start = 0
-    # line, = plt.plot(x, sdata[:, chan])
+    
     if reps == 1:
         np.save(name, sdata)
     else:
         np.save(name + "_" + str(i+1), sdata)
 
-    # if first == 0:
-        # line, = plt.plot(x, sdata[:, chan])
-        # start = time_ms()
-        # first = 1
-    # else:
-        # reduce jittery display by only plotting every 100mS
-        # if time_ms() >= start+100:
-            # start += 100
-            # line.set_xdata(x)
-            # line.set_ydata(sdata[:, chan])
-            # figure.canvas.draw()
-            # figure.canvas.flush_events()
-
 # Stop the audio stream
 stream.stop()
 
-plt.ion()  # to run GUI even1t loop
+plt.ion()  # to run GUI event loop
 figure, ax = plt.subplots()
 plt.title(name, fontsize=20)
 plt.xlabel("Frequency (Hz)")
@@ -235,5 +203,3 @@ f, p = psd(sdata[:, chan], fs=samplerate)
 plt.loglog(f, p)
 
 plt.show(block=True)
-# np.save(name, sdata)
-# np.savetxt(name, sdata)

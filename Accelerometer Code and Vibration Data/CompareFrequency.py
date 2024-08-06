@@ -18,7 +18,7 @@ for i in range(n):
 chan = 1
 samplerate = 48000
 
-plt.ion()  # to run GUI even1t loop
+plt.ion()  # to run GUI event loop
 figure, ax = plt.subplots()
 plt.title(" ", fontsize=20)
 plt.xlabel("Frequency (Hz)")
@@ -29,6 +29,5 @@ for i in range(n):
     f, p = psd(data[i][:, chan], fs=samplerate)
     plt.loglog(f, p, label=files[i])
 
-# plt.axvline(30, label="Manufacturer Cutoff", color="red")
 plt.legend()
 plt.show(block=True)

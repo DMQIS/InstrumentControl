@@ -22,7 +22,7 @@ plt.ion()  # to run GUI even1t loop
 figure, ax = plt.subplots()
 plt.title(files[0], fontsize=20)
 plt.xlabel("Frequency (Hz)")
-plt.ylabel("psd units")
+plt.ylabel("g**2/Hz")
 plt.grid(which="major", linestyle="-", color="black")
 plt.grid(which="minor", linestyle="--")
 

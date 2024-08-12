@@ -28,10 +28,12 @@ from scipy.signal import periodogram as psd
 # Digital Accelerometers like the 333D01 return g's.  That can be scale to m/s^2
 eu_sen = np.array([100.0, 100.0])
 eu_units = ["g", "g"]
-s = int(input("How long is this run in seconds? "))
+s = int(input("How long is this run in seconds? ")) # set length of measurement
 blocksize = 48000*s  # Number of samples to acquire per block
 samplerate = 48000  # 48000, 44100, 32000, 22100, 16000, 11050, 8000
 reps = 1  # repetitions of data collection
+mn = -1  # Graph minimum
+mx = 1  # Graph maximum
 chan = 1  # channel (0 or 1) (Channel 1 should be more sensitive)
 name = input("What is the name of this run? ")  # Name for save files
 
@@ -125,6 +127,7 @@ def TMSFindDevices():
         print("ERROR: No compatible devices found")
         exit()
         # raise NoDevicesFound("No compatible devices found")
+    print(dev_info)
     return dev_info
 
 # sounddevice utilizes a call back from PortAudio to lower latency of
@@ -138,11 +141,6 @@ def callback(indata, frames, time, status):
         print(status)
     q.put(indata[:, :])  # Place data in queue
 
-# Helper function to be used for mS delays
-
-
-def time_ms():
-    return int(time.monotonic_ns()/1000000)
 
 # Find compatible devices and extra parameters from the device name
 
@@ -163,7 +161,7 @@ if info[dev]['format'] == 1:  # voltage data so there may be a sensor sensitivit
         if eu_sen[ch] != 0.0:
             scale[ch] *= 1.0 / (eu_sen[ch]/1000.0)
             units[ch] = eu_units[ch]
-elif info[dev]['format'] == 0:  # acceleration units
+elif info[dev]['format'] == 0:  # acceleration units (this one is used for the accelerometer)
     units = ["g", "g"]
 
 # Use q to get data from callback - call back is in different thread
@@ -174,6 +172,7 @@ stream = sd.InputStream(
         samplerate=samplerate, dtype='float32', blocksize=blocksize,
         callback=callback)
 
+# start recording data
 stream.start()
 for i in range(reps):
     data = q.get()
@@ -183,21 +182,23 @@ for i in range(reps):
 
     # sdata is scaled to engineering units (EU) and ready for processing
     # appropriate for your specific application
-    
+
+    # save the data in a .npy file
     if reps == 1:
         np.save(name, sdata)
     else:
         np.save(name + "_" + str(i+1), sdata)
 
-# Stop the audio stream
+# Stop collecting data
 stream.stop()
 
-plt.ion()  # to run GUI event loop
+
+# plot the data in a periodogram for a quick visual
+plt.ion()  # to run GUI even1t loop
 figure, ax = plt.subplots()
 plt.title(name, fontsize=20)
 plt.xlabel("Frequency (Hz)")
-plt.ylabel("psd units")
-
+plt.ylabel("g**2/Hz")
 
 f, p = psd(sdata[:, chan], fs=samplerate)
 plt.loglog(f, p)

@@ -18,7 +18,7 @@ samplerate = 48000
 size = len(data[0])/n
 
 # Set up graph
-plt.ion()  # to run GUI even1t loop
+plt.ion()  # to run GUI event loop
 figure, ax = plt.subplots()
 plt.title(files[0], fontsize=20)
 plt.xlabel("Frequency (Hz)")

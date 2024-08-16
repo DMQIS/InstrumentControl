@@ -8,9 +8,9 @@ s = float(input("Time (in seconds)? "))  # Set time which is used to split data
 # Set up graph
 plt.ion()
 figure, ax = plt.subplots()
-plt.title("", fontsize=20)
-plt.xlabel("Frequency (Hz)")
-plt.ylabel("g**2/Hz")
+plt.title(input("Plot Title? "), fontsize=20)
+plt.xlabel("Frequency [Hz]")
+plt.ylabel("Acceleration Spectral Density [g**2/Hz]")
 plt.grid(which="major", linestyle="-", color="black")
 plt.grid(which="minor", linestyle="--")
 

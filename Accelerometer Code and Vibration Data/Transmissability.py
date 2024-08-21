@@ -7,7 +7,7 @@ chan = 1
 samplerate = 48000
 s = 1  # Sets time to split and average over
 
-plt.ion()  # to run GUI event loop
+plt.ion()
 figure, ax = plt.subplots()
 plt.title(" ", fontsize=20)
 plt.xlabel("Frequency [Hz]")

@@ -3,7 +3,7 @@ This is all of the code for running the Digiducer USB Digital Accelerometer (333
 
 NAMING CONVENTIONS FOR CODE (.PY FILES):
 
-"USE_THIS" will plot a periodogram that takes a large sample of data, splits it into smaller sections of time (as specified by the response to "Windloe Length?"), and plots the average.
+"USE_THIS" will plot a periodogram that takes a large sample of data, splits it into smaller sections of time (as specified by the response to "Window Length?"), and plots the average.
 
 "Accelerometer" will collect data from the accelerometer
 

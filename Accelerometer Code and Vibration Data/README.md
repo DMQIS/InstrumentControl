@@ -6,6 +6,10 @@ NAMING CONVENTIONS FOR CODE (.PY FILES):
 "USE_THIS" will plot a periodogram that takes a large sample of data, splits it into smaller sections of time (as specified by the response to "Time?"), and plots the average.
 
 "Accelerometer" will collect data from the accelerometer
+
+"Sum" will compare data like USE_THIS, but adds up all three axis at each location
+
+"Transmissibility" displays the transmissibility between two data sets
  
 Codes with "Plot" will plot data from multiple files side by side
  
@@ -18,12 +22,12 @@ Codes with "Time" will plot acceleration graphs with respect to time
 Codes with "Frequency" will plot periodograms with respect to frequency
 
 
- NAMING CONVENTIONS FOR DATA (.NPY FILES):
+NAMING CONVENTIONS FOR DATA (.NPY FILES):
 
- Names of files correspond to the location and set up of data collection (images on Confluence)
+Names of files correspond to the location and set up of data collection (images on Confluence)
 
- Numbers in files refer to the orientation/axis of data collection
+Numbers in files refer to the orientation/axis of data collection
 
- Files with "Off" contain data from when the pulse tube is off
+Files with "Off" contain data from when the pulse tube is off
 
- Flies with "SH" are data taken from Shawn Henderson's DR
+Flies with "SH" are data taken from Shawn Henderson's DR

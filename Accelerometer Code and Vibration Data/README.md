@@ -25,3 +25,5 @@ Codes with "Frequency" will plot periodograms with respect to frequency
  Numbers in files refer to the orientation/axis of data collection
 
  Files with "Off" contain data from when the pulse tube is off
+
+ Flies with "SH" are data taken from Shawn Henderson's DR

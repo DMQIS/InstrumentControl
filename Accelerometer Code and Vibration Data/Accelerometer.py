@@ -32,8 +32,6 @@ s = int(input("How long is this run in seconds? ")) # set length of measurement
 blocksize = 48000*s  # Number of samples to acquire per block
 samplerate = 48000  # 48000, 44100, 32000, 22100, 16000, 11050, 8000
 reps = 1  # repetitions of data collection
-mn = -1  # Graph minimum
-mx = 1  # Graph maximum
 chan = 1  # channel (0 or 1) (Channel 1 should be more sensitive)
 name = input("What is the name of this run? ")  # Name for save files
 

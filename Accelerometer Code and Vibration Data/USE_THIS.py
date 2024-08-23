@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 from scipy.signal import periodogram as psd
 
 n = int(input("How many files? "))  # How many files to compare?
-s = float(input("Time (in seconds)? "))  # Set time which is used to split data
+s = float(input("Window Length (in seconds)? "))  # Set time which is used to split data
 
 # Set up graph
 plt.ion()
@@ -26,7 +26,7 @@ for i in range(n):
     splits = int(np.size(data[:, chan])/samplerate/s)
 
     if splits < 1:
-        print("File is too short or time is too long. Please try again.")
+        print("File is too short or window length is too long. Please try again.")
         exit()
 
     # Average and plot data

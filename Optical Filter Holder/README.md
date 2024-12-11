@@ -1,3 +1,5 @@
+Confluence page: https://confluence.slac.stanford.edu/display/DMQIS/Optical+Filter
+
 Sized to fit through Olaf & BFG's line-of-sight ports
 
 Side-by-side new filter holder & Mightex filter holder:

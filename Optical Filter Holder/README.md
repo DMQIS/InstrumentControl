@@ -1,4 +1,4 @@
-Confluence page: https://confluence.slac.stanford.edu/display/DMQIS/Optical+Filter
+Confluence page with BOM: https://confluence.slac.stanford.edu/display/DMQIS/Optical+Filter
 
 Sized to fit through Olaf & BFG's line-of-sight ports
 

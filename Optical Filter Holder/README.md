@@ -1,7 +1,8 @@
 Sized to fit through Olaf & BFG's line-of-sight ports
 
-Side-by-side new filter holder & Mightex filter holder 
-<img src="https://github.com/user-attachments/assets/0a3467a5-a80e-4233-8ccb-5a5b9086f104" width="250"/>
+Side-by-side new filter holder & Mightex filter holder:
+
+<img src="https://github.com/user-attachments/assets/0a3467a5-a80e-4233-8ccb-5a5b9086f104" width="400"/>
 
 
 Assembly:

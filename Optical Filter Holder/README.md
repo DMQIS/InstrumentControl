@@ -4,9 +4,8 @@ Confluence page with BOM: https://confluence.slac.stanford.edu/display/DMQIS/Opt
 
 Sized to fit through Olaf & BFG's line-of-sight ports
 
-Side-by-side new filter holder & Mightex filter holder:
-
-<img src="https://github.com/user-attachments/assets/0a3467a5-a80e-4233-8ccb-5a5b9086f104" width="400"/>
+<img src="https://github.com/user-attachments/assets/b9f74050-701d-49b7-94da-fc71bdfdedb6" width="400"/>
+<img src="https://github.com/user-attachments/assets/d684d24d-8c65-420c-8866-dc425186ba1f" width="400"/>
 
 
 Assembly:

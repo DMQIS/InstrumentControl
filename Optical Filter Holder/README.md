@@ -18,3 +18,11 @@ Optical filters secured by retaining ring
 
 
 For development documentation, see the confluence page: https://confluence.slac.stanford.edu/display/DMQIS/Optical+Filter
+
+Sample mounting of filter holder into Line Of Sight optical port:
+
+![image](https://github.com/user-attachments/assets/a5b935db-a06b-4c1d-bfa4-cbab3ae1b94c)
+
+
+Sample mounting of filter and retining ring:
+![image](https://github.com/user-attachments/assets/5140e044-ff82-49d7-92ff-6fb85705339c)

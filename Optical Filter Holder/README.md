@@ -23,4 +23,11 @@ Sample mounting of filter holder into Line Of Sight optical port:
 
 ![image](https://github.com/user-attachments/assets/a5b935db-a06b-4c1d-bfa4-cbab3ae1b94c)
 
+SM05 thread reference:
+
+![image](https://github.com/user-attachments/assets/84f57dc3-f965-4018-8728-bf929330584f)
+
+
+https://www.thorlabs.com/NewGroupPage9_PF.cfm?ObjectGroup_ID=3306 
+
 

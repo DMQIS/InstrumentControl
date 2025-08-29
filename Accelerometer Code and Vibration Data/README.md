@@ -1,6 +1,9 @@
 This is all of the code for running the Digiducer USB Digital Accelerometer (333D01) and plotting the data that it returns. All of the data that has been collected is also stored here. 
 
 
+<img width="1245" height="691" alt="image" src="https://github.com/user-attachments/assets/c581062b-5a70-4dd3-a51e-7608758c3e3f" />
+
+
 NAMING CONVENTIONS FOR CODE (.PY FILES):
 
 "USE_THIS" will plot a periodogram that takes a large sample of data, splits it into smaller sections of time (as specified by the response to "Window Length?"), and plots the average.

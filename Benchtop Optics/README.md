@@ -1,1 +1,1 @@
-CAD + code for bencthop optics in B33
+CAD + code for benchtop optics in B33

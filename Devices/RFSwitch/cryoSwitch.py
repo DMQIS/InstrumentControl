@@ -6,7 +6,7 @@ import numpy as np
 class CryoSwitch:
 
     def __init__(self, portName, verbose=True, debug=False):
-        self.statusfile = "switch_state.npy"
+        self.statusfile = "/home/dmqi/InstrumentControl/Devices/RFSwitch/switch_status.npy"
         self.status = np.load(self.statusfile)
         
         self.port = serial.Serial(portName, 9600, timeout=0.0)
@@ -36,9 +36,10 @@ class CryoSwitch:
         return msg
 
     def send(self, cmd, sleepTime=0.1, allowtog=False):
-        if "tog" in cmd:
-            print("WARNING: toggling via direct send circumvents updating the switch state. Pass allowtog=True to do this anyway.")
-            return -1
+        if "tog" in cmd or "all" in cmd:
+            if not allowtog:
+                print("WARNING: toggling via direct send circumvents updating the switch state. Pass allowtog=True to do this anyway.")
+                return -1
         if(self.debug):
             print("Sending: ", cmd)
         self.port.write((cmd+"\r\n").encode())
@@ -48,7 +49,7 @@ class CryoSwitch:
     def openPorts(self, switch):
         self.status[switch-1][:] = 0
         np.save(self.statusfile, self.status)
-        return self.send("all "+str(int(switch)))
+        return self.send("all "+str(int(switch)), allowtog=True)
 
     def openAllPorts(self):
         for i in range(1, switchNum+1):
@@ -56,15 +57,19 @@ class CryoSwitch:
 
     def enablePort(self, switch, port):
         if self.status[switch-1][port-1] == 0:
-            self.send("tog "+str(int(switch))+" "+str(int(port))+" cls")
+            self.send("tog "+str(int(switch))+" "+str(int(port))+" cls", allowtog=True)
             self.status[switch-1][port-1] = 1
             np.save(self.statusfile, self.status)
+        else:
+            print(f"Switch {switch} port {port} already enabled.")
 
     def disablePort(self, switch, port):
         if self.status[switch-1][port-1] == 1:
-            self.send("tog "+str(int(switch))+" "+str(int(port))+" opn")
+            self.send("tog "+str(int(switch))+" "+str(int(port))+" opn", allowtog=True)
             self.status[switch-1][port-1] = 0
             np.save(self.statusfile, self.status)
+        else:
+            print(f"Switch {switch} port {port} already disabled.")
 
     def setOpenDuration(self, duration):
         self.send("opd "+str(duration))
